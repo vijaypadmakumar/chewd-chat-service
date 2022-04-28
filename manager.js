@@ -17,7 +17,7 @@ const write_data = async (data) => {
 }
 
 const save_chat = async (chat) => {
-    const { group_id, sent, stamp, content } = chat
+    const { group_id, sent, stamp, message } = chat
 
     let data = await read_data()
 
@@ -25,13 +25,13 @@ const save_chat = async (chat) => {
         data[group_id].push({
             sent: sent,
             stamp: stamp,
-            message: content
+            message: message
         })
     } else {
         data[group_id] = [{
             sent: sent,
             stamp: stamp,
-            message: content
+            message: message
         }]
     }
 

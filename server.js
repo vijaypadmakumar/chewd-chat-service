@@ -6,12 +6,9 @@ const manager = require("./manager")
 app.use(body_parser.json());
 app.use(body_parser.urlencoded({ extended: false }))
 
-app.route("/")
+app.route("/:group_id/:sent/:message/:stamp")
     .get((req, res) => {
-        res.send("active")
-    })
-    .post((req, res) => {
-        manager.save_chat(req.query)
+        manager.save_chat(req.params)
             .then(result => {
                 res.send(result)
             })
@@ -27,3 +24,4 @@ app.route("/get_chat/:group_id")
     })
 
 app.listen(process.env.PORT || 4000)
+
